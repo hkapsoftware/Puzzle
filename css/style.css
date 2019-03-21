@@ -1,0 +1,33 @@
+﻿body {
+    font-family: 'Segoe UI', Calibri, Arial;
+    margin:0;
+}
+h2{
+    font-weight:normal;
+    text-align:center;
+}
+h3{
+    font-weight:normal;
+    margin:3px 0px;
+    text-align:center;
+}
+.game{
+    background-color: #06f07b; 
+    padding: 5px 10px 20px 10px; 
+    text-align: center;
+}
+.btn{
+    border-radius: 20px;
+    background-color: blue;
+    color: #28a745;
+    border-color: #28a745;
+    padding: 40px;
+}
+.btn:hover{
+    color: #fff;
+    background-color: #90a728;
+    border-color: #28a745;
+}
+#collage{
+    border-radius: 10%;
+}

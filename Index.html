@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Image Puzzle</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/image-puzzle.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/image-puzzle.js"></script>
+</head>
+<body>
+    <div id="collage">
+        <h2 style="color:aqua">Puzzle By Hkap </style></h2>
+        <hr />
+        <div id="playPanel" style="padding:5px;display:none;">
+            <h3 id="imgTitle"></h3> <hr />
+            <div style="display:inline-block; margin:auto; width:95%; vertical-align:top;">
+                <ul id="sortable" class="sortable"></ul>
+                <div id="actualImageBox">
+                    <div id="stepBox">
+                        <div>Etapes:</div><div class="stepCount">0</div>
+                    </div>
+                    <div id="timeBox">
+                        Temps: <span id="timerPanel"></span> secs
+                    </div>
+                    <img id="actualImage" />
+                    <div>Recréer l'image tel que défini ici.</div>
+                    <div><h2 style="text-align:center">Niveau du Jeu</h2></div>
+                    <p id="levelPanel" style="text-align:center">
+                        <input type="radio" name="level" id="easy" checked="checked" value="3" /> <label for="easy">Facile</label>
+                        <input type="radio" name="level" id="medium" value="4" /> <label for="medium">Moyen</label>
+                        <input type="radio" name="level" id="hard" value="5" /> <label for="hard">Difficile</label>
+                    </p>
+                    <div style="text-align:center">
+                        <button id="newPhoto" type="button" class="btn">Autre Photos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gameOver" style="display:none;">
+            <div class="game">
+                <h2 style="text-align:center">Jeu terminer!!</h2>
+                Felicitation!! <br /> Votre photo est complet.
+                <br />
+                Etapes: <span class="stepCount">0</span> Etapes.
+                <br />
+                Temps pris: <span class="timeCount">0</span> seconds<br />
+                <div>
+                    <button type="button" class="btn" onclick="window.location.reload(true);">Rejouer encore</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var images = [
+                { src: 'images/london-bridge.png', title: ' Touche pas à ces cuisses' },
+                { src: 'images/lotus-temple.jpg', title: 'La face cachée' },
+                { src: 'images/qutub-minar.png', title: 'Crabe Solidaire' },
+                { src: 'images/statue-of-liberty.png', title: 'Koal en Action' },
+                { src: 'images/taj-mahal.png', title: "Il vous as à l'oeil" }
+            ];
+
+            $(function () {
+                var gridSize = $('#levelPanel :radio:checked').val();
+                imagePuzzle.startGame(images, gridSize);
+                $('#newPhoto').click(function () {
+                    var gridSize = $('#levelPanel :radio:checked').val();  
+                    imagePuzzle.startGame(images, gridSize);
+                });
+
+                $('#levelPanel :radio').change(function (e) {
+                    var gridSize = $(this).val();
+                    imagePuzzle.startGame(images, gridSize);
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
